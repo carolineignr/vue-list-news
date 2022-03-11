@@ -100,6 +100,7 @@ export default {
     flex: 1 1 0;
     height: 70vh;
     margin: 0.75rem 1.25rem;
+    overflow-y: scroll;
   }
 
   .right {
