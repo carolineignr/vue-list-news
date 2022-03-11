@@ -27,7 +27,7 @@ export default {
 	name: 'ArticlesDetail',
 	data() {
 		return {
-			emptyMessage: 'Unfortunately no articles have been selected yet. Click on one to read the details.'
+			emptyMessage: 'No article have been selected yet. Click on one to read the details.'
 		}
 	},
 	components: {

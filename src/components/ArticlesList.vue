@@ -44,7 +44,9 @@ export default {
 		}
 	},
 	methods: {
-		filterArticles() {		
+		filterArticles() {
+			this.unsetCurrentArticle();
+				
 			return this.articles.filter(({ title}) => {
 				return this.searchQuery.toLowerCase().split(" ").every(query => {
 					return title.toLowerCase().includes(query);
@@ -55,10 +57,11 @@ export default {
 			return value.length > 50 ? value.slice(0, 80) + '...' :  value;
 		},
 		setCurrentArticle(index) {
-			this.$store.dispatch('setCurrentArticle', this.filteredArticles[index]);
+			const article = this.filteredArticles[index];
+			this.searchQuery = null;
+			this.$store.dispatch('setCurrentArticle', article);
 		},
 		unsetCurrentArticle() {
-			this.searchQuery = null;
 			this.$store.dispatch('setCurrentArticle', null);
 		}
 	}
