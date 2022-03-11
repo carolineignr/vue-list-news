@@ -5,6 +5,7 @@
 
 		<div class="cards__container">
 			<div v-if="loading" class="spin"></div>
+
 			<div v-else v-for="(article, index) in filteredArticles" :key="index">
 				<div class="card">
 					<img />
@@ -43,7 +44,7 @@ export default {
 		}
 	},
 	methods: {
-		filterArticles() {
+		filterArticles() {		
 			return this.articles.filter(({ title}) => {
 				return this.searchQuery.toLowerCase().split(" ").every(query => {
 					return title.toLowerCase().includes(query);
@@ -55,6 +56,10 @@ export default {
 		},
 		setCurrentArticle(index) {
 			this.$store.dispatch('setCurrentArticle', this.filteredArticles[index]);
+		},
+		unsetCurrentArticle() {
+			this.searchQuery = null;
+			this.$store.dispatch('setCurrentArticle', null);
 		}
 	}
 }
@@ -79,8 +84,6 @@ export default {
 		text-align: left;
 		margin: 20px 0;
 		height: 70vh;
-		overflow-x: hidden;
-    overflow-y: scroll;
 	}
 
 	.card {
