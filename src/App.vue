@@ -13,7 +13,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -21,5 +21,19 @@ body {
   color: #2c3e50;
   margin: 0;
   padding: 0;
+}
+
+button {
+  margin-top: 0.8rem;
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+
+  &:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+  }
 }
 </style>

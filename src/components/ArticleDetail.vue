@@ -3,10 +3,11 @@
 		<empty-section v-bind:description="emptyMessage"/>
 	</div>
 
-  <div v-else class="article">
+  <article v-else class="article">
 		<section class="header">
 			<div class="info">
-				<span class="author">{{ article.author }}</span> |
+				<span class="author">{{ article.author }}</span> 
+        <span v-if="article.author"> | </span>
 				<span class="date">{{ formatedDate(article.publishedAt) }}</span>	
 			</div>
 			<a v-bind:href="article.url">Original article</a>
@@ -17,7 +18,7 @@
 		<section class="content">
 			{{ article.content }}
 		</section>
-  </div>
+  </article>
 </template>
 
 <script>
@@ -27,7 +28,7 @@ export default {
 	name: 'ArticlesDetail',
 	data() {
 		return {
-			emptyMessage: 'No article have been selected yet. Click on one to read the details.'
+			emptyMessage: 'No article have been selected yet. Choose one to read the details.'
 		}
 	},
 	components: {
@@ -82,6 +83,9 @@ export default {
 		margin: 1.5rem;
 		text-align: center;
 		font-size: .9rem;
+		padding: .5rem;
+		border-top: 1.5px solid black;
+		border-bottom: 1.5px solid black;
 	}
 
 	.header {

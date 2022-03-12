@@ -1,14 +1,15 @@
 <template>
 	<div class="container">
-		<label>Search for an article by it's title name</label>
-		<input v-model="searchQuery">
+		<input 
+			v-model="searchQuery" 
+			placeholder="Search for an article by title name"
+		>
 
 		<div class="cards__container">
 			<div v-if="loading" class="spin"></div>
 
 			<div v-else v-for="(article, index) in filteredArticles" :key="index">
 				<div class="card">
-					<img />
 					<div>
 						<p>{{ article.title }}</p>
 						<span>{{ truncatedDescription(article.description) }}</span>
@@ -60,10 +61,14 @@ export default {
 			const article = this.filteredArticles[index];
 			this.searchQuery = null;
 			this.$store.dispatch('setCurrentArticle', article);
+      this.scrollToTop();
 		},
 		unsetCurrentArticle() {
 			this.$store.dispatch('setCurrentArticle', null);
-		}
+		},
+    scrollToTop() {
+      window.scrollTo(0,0);
+  }
 	}
 }
 </script>
@@ -78,9 +83,10 @@ export default {
 		cursor: pointer;
 	}
 
-	label {
-		text-align: left;
-		font-weight: bold;
+	input {
+		border: none;
+		background: rgba(211, 211, 211, 0.424);
+		padding: .5rem;
 	}
 
 	.cards__container {

@@ -6,17 +6,15 @@
         <p>Choose an article in the list below and read the details.</p>
       </header>
       <main>
-        <articles-list class="left" v-bind:loading="loading" />
-        <div class="divider"></div>
         <article-detail class="right" />
+        <div class="divider"></div>
+        <articles-list class="left" v-bind:loading="loading" />
       </main>
       <button v-on:click="getArticles">{{ buttonGetArticles }}</button>
     </div>
     <div v-else>
       <h1>{{ title }}</h1>
-      <empty-section 
-        v-bind:description="error || genericError" 
-      />
+      <empty-section v-bind:description="error || genericError" />
     </div>
   </div>
 </template>
@@ -71,27 +69,20 @@ export default {
 </script>
 
 <style lang="scss">
+  .page__wrapper {
+    margin: 3rem;
+    text-align: center;
+  }
+
   main {
     display: flex;
-    justify-content: space-evenly;
+    flex-flow: row-reverse;
+    justify-content: space-between;
     margin-top: 1.25rem;
   }
 
   header {
     text-align: left;
-  }
-
-  footer {
-    font-size: 0.7rem;
-    text-align: center;
-    position: absolute;
-    bottom: 0px;
-    left: 50vw;
-  }
-
-  .page__wrapper {
-    margin: 3rem;
-    text-align: center;
   }
 
   .left, .right {
@@ -113,12 +104,20 @@ export default {
   }
 
   @media (max-width: 800px) {
-    main { 
-      flex-direction: column-reverse;
+    main {
+      display: block;
     }
 
     .divider {
-      display: none;
+      border-top: 2px solid rgba(0, 0, 0, 0.514);
+      width: 70vw;
+      border-left: none;
+      height: auto;
+      margin: 2rem auto;
+    }
+
+    .right {
+      height: auto;
     }
   }
 </style>
