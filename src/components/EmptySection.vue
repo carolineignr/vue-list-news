@@ -27,13 +27,13 @@
 
 <script>
 export default ({
-	name: 'EmptyPage',
-	props: {
-		description: {
-			type: String,
-		}
-	}
-})
+  name: 'EmptyPage',
+  props: {
+    description: {
+      type: String,
+    }
+  }
+});
 </script>
 
 <style lang="scss">

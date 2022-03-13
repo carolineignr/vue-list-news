@@ -25,47 +25,47 @@ import ArticlesList from './ArticlesList.vue';
 import EmptySection from './EmptySection.vue';
 
 export default {
-	name: 'HomePage',
-	data() {
-		return {
+  name: 'HomePage',
+  data() {
+    return {
       articles: [],
-			title: 'Articles List',
-			buttonGetArticles: 'Refresh articles list',
-			loading: false,
-			error: null,
+      title: 'Articles List',
+      buttonGetArticles: 'Refresh articles list',
+      loading: false,
+      error: null,
       genericError: 'Sorry, something is going wrong. Try again later.'
-		}
-	},
-	beforeMount() {
-		this.getArticles();
-	},
-	components: {
-		ArticleDetail,
-		ArticlesList,
-		EmptySection
-	},
-	methods: {
-		async getArticles() {
-			const api = 'http://0.0.0.0:8000';
-			const endpoint = '/v1/news/';
-			const options = { method: 'GET' };
+    };
+  },
+  beforeMount() {
+    this.getArticles();
+  },
+  components: {
+    ArticleDetail,
+    ArticlesList,
+    EmptySection
+  },
+  methods: {
+    async getArticles() {
+      const api = 'http://0.0.0.0:8000';
+      const endpoint = '/v1/news/';
+      const options = { method: 'GET' };
 
-			this.loading = true;
+      this.loading = true;
 
-			const response = await fetch(api + endpoint, options);
+      const response = await fetch(api + endpoint, options);
       
       if (response.ok) {
-				const { articles } = await response.json();
-				this.$store.dispatch('setArticlesList', articles);
+        const { articles } = await response.json();
+        this.$store.dispatch('setArticlesList', articles);
         this.articles = this.$store.state.articles;
       } else {
         this.error = `Unfortunately we can't reach the articles list because of error '${response.statusMessage}'.`;
       }
 			
       this.loading = false;
-		}
-	}
-}
+    }
+  }
+};
 </script>
 
 <style lang="scss">

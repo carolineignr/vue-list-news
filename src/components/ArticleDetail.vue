@@ -25,24 +25,24 @@
 import EmptySection from './EmptySection.vue';
 
 export default {
-	name: 'ArticlesDetail',
-	data() {
-		return {
-			emptyMessage: 'No article have been selected yet. Choose one to read the details.'
-		}
-	},
-	components: {
-		EmptySection
-	},
-	computed: {
-		article() { return this.$store.state.currentArticle }
-	},
-	methods: {
-		formatedDate(date) {
-			return new Date(date).toLocaleDateString()
-		}
-	}
-}
+  name: 'ArticleDetail',
+  data() {
+    return {
+      emptyMessage: 'No article have been selected yet. Choose one to read the details.'
+    };
+  },
+  components: {
+    EmptySection
+  },
+  computed: {
+    article() { return this.$store.state.currentArticle; }
+  },
+  methods: {
+    formatedDate(date) {
+      return new Date(date).toLocaleDateString();
+    }
+  }
+};
 </script>
 
 <style lang="scss">

@@ -23,54 +23,54 @@
 
 <script>
 export default {
-	name: 'ArticlesList',
-	data() {
-		return {
-			searchQuery: null
-		}
-	},
-	props: {
-		loading: {
-			type: Boolean,
-			default: false
-		}
-	},
-	computed: {
-		articles() { return this.$store.state.articles },
-		filteredArticles() {
-			if (this.searchQuery) {
-				return this.filterArticles();
-			}
-			return this.articles;
-		}
-	},
-	methods: {
-		filterArticles() {
-			this.unsetCurrentArticle();
+  name: 'ArticlesList',
+  data() {
+    return {
+      searchQuery: null
+    };
+  },
+  props: {
+    loading: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    articles() { return this.$store.state.articles; },
+    filteredArticles() {
+      if (this.searchQuery) {
+        return this.filterArticles();
+      }
+      return this.articles;
+    }
+  },
+  methods: {
+    filterArticles() {
+      this.unsetCurrentArticle();
 				
-			return this.articles.filter(({ title}) => {
-				return this.searchQuery.toLowerCase().split(" ").every(query => {
-					return title.toLowerCase().includes(query);
-				})
-			})
-		},
-		truncatedDescription(value) {
-			return value.length > 50 ? value.slice(0, 80) + '...' :  value;
-		},
-		setCurrentArticle(index) {
-			const article = this.filteredArticles[index];
-			this.searchQuery = null;
-			this.$store.dispatch('setCurrentArticle', article);
+      return this.articles.filter(({ title}) => {
+        return this.searchQuery.toLowerCase().split(' ').every(query => {
+          return title.toLowerCase().includes(query);
+        });
+      });
+    },
+    truncatedDescription(value) {
+      return value.length > 50 ? value.slice(0, 80) + '...' : value;
+    },
+    setCurrentArticle(index) {
+      const article = this.filteredArticles[index];
+      this.searchQuery = null;
+      this.$store.dispatch('setCurrentArticle', article);
       this.scrollToTop();
-		},
-		unsetCurrentArticle() {
-			this.$store.dispatch('setCurrentArticle', null);
-		},
+    },
+    unsetCurrentArticle() {
+      this.$store.dispatch('setCurrentArticle', null);
+    },
     scrollToTop() {
       window.scrollTo(0,0);
+    }
   }
-	}
-}
+};
 </script>
 
 <style lang="scss">
