@@ -1,24 +1,23 @@
 <template>
-	<div class="container">
-		<input 
-			v-model="searchQuery" 
-			placeholder="Search for an article by title name"
-		>
+  <div class="container">
+    <input 
+    v-model="searchQuery" 
+    placeholder="Search for an article by title name"
+    >
+    <div class="cards__container">
+      <div v-if="loading" class="spin"></div>
 
-		<div class="cards__container">
-			<div v-if="loading" class="spin"></div>
-
-			<div v-else v-for="(article, index) in filteredArticles" :key="index">
-				<div class="card">
-					<div>
-						<p>{{ article.title }}</p>
-						<span>{{ truncatedDescription(article.description) }}</span>
-					</div>
-					<button v-on:click="setCurrentArticle(index)">Read more</button>
-				</div>
-			</div>
-		</div>
-	</div>
+      <div v-else v-for="(article, index) in filteredArticles" :key="index">
+        <div class="card">
+          <div>
+            <p>{{ article.title }}</p>
+            <span>{{ truncatedDescription(article.description) }}</span>
+          </div>
+          <button v-on:click="setCurrentArticle(index)">Read more</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

@@ -6,8 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit",
-    "test": "jest"
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -44,21 +43,6 @@
     ],
     "parserOptions": {
       "parser": "@babel/eslint-parser"
-    },
-    "rules": {},
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ]
-      }
-    ]
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ]
+    }
+  }
 }
