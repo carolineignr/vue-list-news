@@ -1,4 +1,7 @@
 {
+  "include": [
+    "./src/components/*"
+  ],
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",

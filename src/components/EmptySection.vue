@@ -26,63 +26,84 @@
 </template>
 
 <script>
-export default ({
-  name: 'EmptyPage',
+export default {
+  name: "EmptyPage",
   props: {
     description: {
       type: String,
-    }
-  }
-});
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-	.container {
-		&:first-child {
-			position: relative;
-			top: 10%;
-			text-align: center;
-		}
-	}
-
-	.empty {
-		text-align: center;
-	}
-
-	.neutral { 
-    margin-bottom: 1.25rem;
-
-    .face {
-        animation: upAndDown 6s ease infinite; 
-    }
-    
-    .left-eye, .right-eye {
-        opacity: 1;
-        transform-origin: 0 1px;
-        animation: blink 3s linear infinite;
-        animation-delay: 1s;
-    }
-    .mouth {
-        animation: scaleX 2s ease infinite alternate-reverse;
-    }
+.container {
+  &:first-child {
+    position: relative;
+    top: 10%;
+    text-align: center;
+  }
 }
 
-	@keyframes upAndDown {
-		0% { transform: translate(0, -1px); }
-		50% { transform: translate(0, 2px); }
-		100% { transform: translate(0, -1px); }
-	}
+.empty {
+  text-align: center;
+}
 
-	@keyframes scaleX {
-		0% { transform: translate(0, 0) scale(1, 1); }
-		100% { transform: translate(-9px, 0) scale(2, 1); }
-	}
+.neutral {
+  margin-bottom: 1.25rem;
 
-	@keyframes blink {
-		0% { opacity: 1; }
-		45% { opacity: 1; }
-		50% { opacity: 0; }
-		55% { opacity: 1; }
-		100% { opacity: 1; }
-	}
+  .face {
+    animation: upAndDown 6s ease infinite;
+  }
+
+  .left-eye,
+  .right-eye {
+    opacity: 1;
+    transform-origin: 0 1px;
+    animation: blink 3s linear infinite;
+    animation-delay: 1s;
+  }
+  .mouth {
+    animation: scaleX 2s ease infinite alternate-reverse;
+  }
+}
+
+@keyframes upAndDown {
+  0% {
+    transform: translate(0, -1px);
+  }
+  50% {
+    transform: translate(0, 2px);
+  }
+  100% {
+    transform: translate(0, -1px);
+  }
+}
+
+@keyframes scaleX {
+  0% {
+    transform: translate(0, 0) scale(1, 1);
+  }
+  100% {
+    transform: translate(-9px, 0) scale(2, 1);
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 </style>

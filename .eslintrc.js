@@ -9,15 +9,16 @@ module.exports = {
   ],
   'parserOptions': {
     'ecmaVersion': 12,
-    'sourceType': 'module'
+    'sourceType': 'module',
+    "parser": "@babel/eslint-parser"
   },
   'plugins': [
     'vue'
-  ],
-  'rules': {
-    'quotes': ['error', 'single'],
-    'semi': ['error', 'always'],
-    'indent': ['error', 2],
-    'no-multi-spaces': ['error']
-  }
+  ]
+  // 'rules': {
+  //   'quotes': ['error', 'single'],
+  //   'semi': ['error', 'always'],
+  //   'indent': ['error', 2],
+  //   'no-multi-spaces': ['error']
+  // }
 };
