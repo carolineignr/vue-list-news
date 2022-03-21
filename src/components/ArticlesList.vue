@@ -13,7 +13,9 @@
             <p>{{ article.title }}</p>
             <span>{{ truncatedDescription(article.description) }}</span>
           </div>
-          <button v-on:click="setCurrentArticle(index)">Read more</button>
+          <button data-button="read-more" v-on:click="setCurrentArticle(index)">
+            Read more
+          </button>
         </div>
       </div>
     </div>

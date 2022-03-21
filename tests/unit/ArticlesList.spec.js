@@ -5,7 +5,6 @@ import ArticlesList from '../../src/components/ArticlesList';
 const store = createStore({
   state() {
     return {
-      currentArticle: '',
       articles: [
         {
           title: 'First',
@@ -17,9 +16,6 @@ const store = createStore({
         }
       ]
     };
-  },
-  actions: {
-    setCurrentArticle: jest.fn()
   }
 });
 
@@ -38,7 +34,39 @@ test('articles render', async () => {
 });
 
 test('when click in \'read more\' setCurrentArticle should be called', async () => {
-  const spy = jest.spyOn(store.actions, 'setCurrentArticle');
-  await wrapper.find('button').trigger('click');
-  // expect(store.actions.setCurrentArticle).toBeCalled();
+  const $store = createStore({
+    state() {
+      return {
+        currentArticle: '',
+        articles: [
+          {
+            title: 'First',
+            description: 'First description'
+          },
+          {
+            title: 'Second',
+            description: 'Second description'
+          }
+        ]
+      };
+    },
+    commit: {
+      setCurrentArticle: jest.fn()
+    }
+  });
+  
+  const wrapper = shallowMount(ArticlesList, {
+    global: {
+      mocks: {
+        $store
+      }
+    }
+  });
+
+  const spy = jest.spyOn(wrapper.componentVM.$store.setCurrentArticle, 'setCurrentArticle');
+  debugger;
+  await wrapper.find('[data-button="read-more"]').trigger('click');
+  debugger;
+  expect(spy).toHaveBeenCalled();
+  debugger;
 });
